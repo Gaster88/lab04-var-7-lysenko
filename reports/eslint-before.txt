@@ -1,0 +1,29 @@
+[0m
+[4mC:\Users\Ярік\OneDrive\Desktop\Lab04_lysenko_ipz\src\app.js[24m
+   [2m17:66[22m  [31merror[39m    Duplicate key 'limit'                                                                                  [2mno-dupe-keys[22m
+   [2m35:28[22m  [31merror[39m    'debug' is defined but never used                                                                      [2mno-unused-vars[22m
+   [2m36:43[22m  [31merror[39m    Expected '===' and instead saw '=='                                                                    [2meqeqeq[22m
+   [2m40:14[22m  [31merror[39m    'status' is assigned to itself                                                                         [2mno-self-assign[22m
+   [2m41:53[22m  [31merror[39m    Expected '===' and instead saw '=='                                                                    [2meqeqeq[22m
+   [2m51:43[22m  [33mwarning[39m  Unexpected block statement surrounding arrow body; move the returned value immediately after the `=>`  [2marrow-body-style[22m
+   [2m83:9[22m   [31merror[39m    Duplicate case label                                                                                   [2mno-duplicate-case[22m
+   [2m86:20[22m  [31merror[39m    Unexpected string concatenation                                                                        [2mprefer-template[22m
+   [2m86:43[22m  [31merror[39m    'statusCode' is not defined                                                                            [2mno-undef[22m
+  [2m122:38[22m  [33mwarning[39m  Unexpected block statement surrounding arrow body; move the returned value immediately after the `=>`  [2marrow-body-style[22m
+  [2m136:5[22m   [31merror[39m    Unreachable code                                                                                       [2mno-unreachable[22m
+  [2m142:28[22m  [31merror[39m    Empty block statement                                                                                  [2mno-empty[22m
+  [2m146:21[22m  [31merror[39m    Unexpected string concatenation                                                                        [2mprefer-template[22m
+  [2m147:21[22m  [31merror[39m    Unexpected string concatenation                                                                        [2mprefer-template[22m
+  [2m151:17[22m  [33mwarning[39m  Blocks are nested too deeply (4). Maximum allowed is 3                                                 [2mmax-depth[22m
+  [2m159:11[22m  [31merror[39m    Identifier 'total_cost' is not in camel case                                                           [2mcamelcase[22m
+  [2m164:9[22m   [31merror[39m    Use the isNaN function to compare with NaN                                                             [2muse-isnan[22m
+  [2m168:39[22m  [31merror[39m    Identifier 'total_cost' is not in camel case                                                           [2mcamelcase[22m
+  [2m170:40[22m  [33mwarning[39m  Unexpected negated condition                                                                           [2mno-negated-condition[22m
+  [2m196:5[22m   [33mwarning[39m  Unexpected negated condition                                                                           [2mno-negated-condition[22m
+  [2m196:24[22m  [31merror[39m    Expected '!==' and instead saw '!='                                                                    [2meqeqeq[22m
+  [2m208:9[22m   [31merror[39m    Expected a conditional expression and instead saw an assignment                                        [2mno-cond-assign[22m
+  [2m221:11[22m  [31merror[39m    'reportDate' is assigned a value but never used                                                        [2mno-unused-vars[22m
+
+[31m[1m✖ 23 problems (18 errors, 5 warnings)[22m[39m
+[31m[1m  3 errors and 2 warnings potentially fixable with the `--fix` option.[22m[39m
+[0m
