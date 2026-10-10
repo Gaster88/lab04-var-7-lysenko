@@ -119,9 +119,7 @@ function getRepairsByMechanic(mechanic) {
 }
 
 function calculateTotalPrice(list) {
-    return list.reduce((total, repair) => {
-        return total + repair.price
-    }, 0)
+    return list.reduce((total, repair) => total + repair.price, 0)
 }
 
 function calculateAveragePrice(list) {
@@ -160,7 +158,7 @@ function getStatusName(status) {
         case 'completed':
             return 'Виконано'
         default:
-            return 'Невідомий статус: ' + statusCode
+            return `Невідомий статус: ${statusCode}`
     }
 }
 
@@ -206,9 +204,7 @@ function getRepairSummary(repair) {
 }
 
 function getMechanicNames(list) {
-    const names = list.map((repair) => {
-        return repair.mechanic
-    })
+    const names = list.map((repair) => repair.mechanic)
     return [...new Set(names)]
 }
 
@@ -233,8 +229,8 @@ function printRepairList(list) {
 
     for (const repair of list) {
         console.log(getRepairSummary(repair))
-        console.log('  Клієнт: ' + repair.customer)
-        console.log('  Майстер: ' + repair.mechanic)
+        console.log(`  Клієнт: ${repair.customer}`)
+        console.log(`  Майстер: ${repair.mechanic}`)
         console.log(`  Статус: ${getStatusName(repair.status)}`)
         if (repair.price > 0) {
             if (repair.hours > 0) {

@@ -1,0 +1,22 @@
+[0m
+[4mC:\Users\Ярік\OneDrive\Desktop\Lab04_lysenko_ipz\src\app.js[24m
+   [2m97:62[22m  [31merror[39m    Duplicate key 'limit'                                   [2mno-dupe-keys[22m
+  [2m108:28[22m  [31merror[39m    'debug' is defined but never used                       [2mno-unused-vars[22m
+  [2m109:47[22m  [31merror[39m    Expected '===' and instead saw '=='                     [2meqeqeq[22m
+  [2m113:14[22m  [31merror[39m    'status' is assigned to itself                          [2mno-self-assign[22m
+  [2m114:53[22m  [31merror[39m    Expected '===' and instead saw '=='                     [2meqeqeq[22m
+  [2m158:9[22m   [31merror[39m    Duplicate case label                                    [2mno-duplicate-case[22m
+  [2m161:43[22m  [31merror[39m    'statusCode' is not defined                             [2mno-undef[22m
+  [2m221:5[22m   [31merror[39m    Unreachable code                                        [2mno-unreachable[22m
+  [2m227:28[22m  [31merror[39m    Empty block statement                                   [2mno-empty[22m
+  [2m237:17[22m  [33mwarning[39m  Blocks are nested too deeply (4). Maximum allowed is 3  [2mmax-depth[22m
+  [2m246:11[22m  [31merror[39m    Identifier 'total_cost' is not in camel case            [2mcamelcase[22m
+  [2m251:9[22m   [31merror[39m    Use the isNaN function to compare with NaN              [2muse-isnan[22m
+  [2m257:39[22m  [31merror[39m    Identifier 'total_cost' is not in camel case            [2mcamelcase[22m
+  [2m260:32[22m  [33mwarning[39m  Unexpected negated condition                            [2mno-negated-condition[22m
+  [2m289:5[22m   [33mwarning[39m  Unexpected negated condition                            [2mno-negated-condition[22m
+  [2m289:24[22m  [31merror[39m    Expected '!==' and instead saw '!='                     [2meqeqeq[22m
+  [2m324:11[22m  [31merror[39m    'reportDate' is assigned a value but never used         [2mno-unused-vars[22m
+
+[31m[1m✖ 17 problems (14 errors, 3 warnings)[22m[39m
+[0m
