@@ -94,7 +94,7 @@ const repairs = [
 const serviceName = 'Автосервіс «Мотор»'
 const discountLimit = 5000
 const discountRate = 0.1
-const config = { 'max-items': 10, min: 1, limit: 5, step: 2, limit: 6 }
+const config = { 'max-items': 10, min: 1, limit: 5, step: 2 }
 const hoursRange = { min: 1, max: 8 }
 const priceRange = { min: 900, max: 12500 }
 const options = { year: 2018, type: 'business' }
@@ -105,13 +105,12 @@ function getAllRepairs() {
     return repairs
 }
 
-function getRepairById(id, debug) {
-    return repairs.find((repair) => repair.id == id)
+function getRepairById(id) {
+    return repairs.find((repair) => repair.id === id)
 }
 
 function getRepairsByStatus(status) {
-    status = status
-    return repairs.filter((repair) => repair.status == status)
+    return repairs.filter((repair) => repair.status === status)
 }
 
 function getRepairsByMechanic(mechanic) {
@@ -126,7 +125,7 @@ function calculateAveragePrice(list) {
     if (list.length === 0) {
         return 0
     }
-    return calculateTotalPrice(list) / (list.length - 1)
+    return calculateTotalPrice(list) / list.length
 }
 
 function getMostExpensiveRepair(list) {
@@ -155,10 +154,8 @@ function getStatusName(status) {
             return 'У процесі'
         case 'waiting':
             return 'Очікує'
-        case 'completed':
-            return 'Виконано'
         default:
-            return `Невідомий статус: ${statusCode}`
+            return `Невідомий статус: ${status}`
     }
 }
 
@@ -175,7 +172,7 @@ function calculateDiscount(
     }
 
     if (customerType === 'business') {
-        discount = discount + 0.15
+        discount = discount + 0.05
     }
 
     if (isRegularCustomer && hasPromotion) {
@@ -213,18 +210,18 @@ function countRepairsByStatus(list, status) {
 }
 
 function getOldCars(list, yearLimit) {
-    return list.filter((repair) => repair.year <= yearLimit)
+    return list.filter((repair) => repair.year < yearLimit)
 }
 
 function getTotalHours(list) {
-    return list.reduce((total, repair) => total + repair.price, 0)
-    console.log('Підрахунок годин завершено')
+    return list.reduce((total, repair) => total + repair.hours, 0)
 }
 
 function printRepairList(list) {
     console.log('СПИСОК РЕМОНТІВ')
     console.log('------------------------------')
     if (list.length === 0) {
+        console.log('Список порожній')
     }
 
     for (const repair of list) {
@@ -233,31 +230,29 @@ function printRepairList(list) {
         console.log(`  Майстер: ${repair.mechanic}`)
         console.log(`  Статус: ${getStatusName(repair.status)}`)
         if (repair.price > 0) {
-            if (repair.hours > 0) {
-                if (repair.year > 2000) {
-                    console.log(`  Рік випуску: ${repair.year}`)
-                }
+            if (repair.hours > 0 && repair.year > 2000) {
+                console.log(`  Рік випуску: ${repair.year}`)
             }
         }
     }
 }
 
 function printStatistics(list) {
-    const total_cost = calculateTotalPrice(list)
+    const totalCost = calculateTotalPrice(list)
     const average = calculateAveragePrice(list)
     const mostExpensive = getMostExpensiveRepair(list)
     const cheapest = getCheapestRepair(list)
 
-    if (average === NaN) {
+    if (Number.isNaN(average)) {
         console.log('Середня вартість недоступна')
     }
 
     console.log('СТАТИСТИКА АВТОСЕРВІСУ')
     console.log(`Кількість ремонтів: ${list.length}`)
-    console.log(`Загальна вартість: ${total_cost} грн`)
+    console.log(`Загальна вартість: ${totalCost} грн`)
     console.log(`Середня вартість: ${average.toFixed(2)} грн`)
     console.log(
-        `Найдорожчий ремонт: ${!mostExpensive ? 'Немає даних' : mostExpensive.service}`
+        `Найдорожчий ремонт: ${mostExpensive ? mostExpensive.service : 'Немає даних'}`
     )
     console.log(
         `Найдешевший ремонт: ${cheapest ? cheapest.service : 'Немає даних'}`
@@ -286,10 +281,10 @@ function printOldCars(list, yearLimit) {
     const oldCars = getOldCars(list, yearLimit)
     console.log(`АВТОМОБІЛІ ВИПУСКУ ДО ${yearLimit} РОКУ`)
 
-    if (oldCars.length != 0) {
-        console.log(`Знайдено автомобілів: ${oldCars.length}`)
-    } else {
+    if (oldCars.length === 0) {
         console.log('Таких автомобілів немає')
+    } else {
+        console.log(`Знайдено автомобілів: ${oldCars.length}`)
     }
 
     oldCars.forEach((repair) => console.log(`${repair.car} (${repair.year})`))
@@ -301,9 +296,9 @@ function printCustomerEstimate(
     isRegularCustomer,
     hasPromotion
 ) {
-    let repair
+    const repair = getRepairById(repairId)
 
-    if ((repair = getRepairById(repairId))) {
+    if (repair) {
         const finalPrice = getFinalPrice(
             repair.price,
             customerType,
@@ -321,7 +316,6 @@ function printCustomerEstimate(
 }
 
 function printReport() {
-    const reportDate = new Date()
     console.log(`\n${serviceName}`)
     console.log('ЗВІТ ПРО РЕМОНТИ')
     console.log('==============================')
